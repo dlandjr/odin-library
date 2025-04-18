@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin Library</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-text">Odin Library</div>
+            </div>
+        </div>
+        <div class="options">
+            <span class="material-symbols-outlined mode icon action">
+                light_mode
+            </span>
+            <a href="https://github.com/dlandjr/odin-library" target="_blank"><img src="./icons/github-mark-white.svg" 
+                alt="github logo" class="github link"></a>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="title-wrap">
+            <div class="books">
+                <template id="card-template">
+                    <div class="card" id="">
+                        <img src="" alt="" class="poster">
+                        <div class="card-info">
+                            <div class="top">
+                                <span class="material-symbols-outlined del action hover">close</span>
+                                <span class="material-symbols-outlined seen action">visibility</span>
+                            </div>
+                            <a href="" target="_blank" class="book-title"></a>
+                            <br>
+                            <div class="info-hover">
+                                <p class="year"></p>
+                                <p class="author"></p>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+    <dialog id="addBookDialog" class="dialog-container">
+        <form method="dialog" class="dialog-content">
+            <button class="close-button" type="button" id="closeBookDialogBtn">x</button>
+
+            <h3>Add Book</h3>
+
+            <div>
+                <label for="book-title">Title</label>
+                <input type="text" id="book-title" name="title" placeholder="To Kill a Mockingbird" required>
+            </div>
+
+            <div>
+                <label for="book-author">Author</label>
+                <input type="text" id="book-author" name="author" placeholder="Harper Lee" required>
+            </div>
+
+            <div>
+                <label for="book-year">Year Published</label>
+                <input type="text" id="book-year" name="year" placeholder="1960" pattern="^\d+$" required>
+            </div>
+
+            <div>
+                <label for="book-pages">Number of Pages</label>
+                <input type="text" id="book-pages" name="pages" placeholder="336" pattern="^\d+$" required>
+            </div>
+
+            <div>
+                <label for="book-cover">Cover URL</label>
+                <input type="text" id="book-cover" name="cover" placeholder="https://books.com/cover.jpg">
+            </div>
+
+            <div class="read-status">
+                <label for="read">Read</label>
+                <label for="switch">
+                    <input id="read" type="checkbox" value="true" />
+                    <div class="switch-btn"></div>
+                </label>
+            </div>
+
+            <button type="submit" id="submit-book">
+                <span class="matetial-symbols-outlined">Submit</span>
+            </button>
+        </form>
+    </dialog>
+    
+    <script src="script.js"></script>
+</body>
+</html>
