@@ -38,8 +38,8 @@
                         <img src="" alt="" class="cover">
                         <div class="card-info">
                             <div class="top">
-                                <span class="material-symbols-outlined del action hover">close</span>
-                                <span class="material-symbols-outlined seen action">visibility</span>
+                                <span class="material-symbols-outlined del action hover" role="button" aria-label="Delete book">close</span>
+                                <span class="read-status">Unread</span>
                             </div>
                             <a href="" target="_blank" class="book-title"></a>
                             <br>
@@ -87,11 +87,11 @@
                 <input type="url" id="book-cover" name="cover" placeholder="https://books.com/cover.jpg">
             </div>
 
-            <div class="read-status">
-                <label for="read">Read</label>
-                <label for="switch">
-                    <input id="read" type="checkbox" value="true" />
-                    <div class="switch-btn"></div>
+            <div>
+                <label class="read-checkbox">
+                  <input type="checkbox" id="read" />
+                  <span class="checkmark"></span>
+                  Read
                 </label>
             </div>
 

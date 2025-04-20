@@ -1,67 +1,47 @@
-/* 1. Use a more intuitive box-sizing model */
+/* Base Resets & Global Styles */
 *, *::before, *::after { box-sizing: border-box; }
-
-/* 2. Remove default margin */
 * { margin: 0; }
 
 body {
-    /* 3. Add accesible line-height */
     line-height: 1.5;
-    /* 4. Improve text rendering */
     -webkit-font-smoothing: antialiased;
     color: var(--text);
     background-color: var(--bg-col);
-    font-family: Roboto, Arial, Helvetica, samns-serif;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
-/* 5. Improve media defaults */
-img,
-picture,
-video,
-canvas,
-svg {
+img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
 }
 
-/* 6. Inherit fonts for form controls */
-input,
-button, 
-textarea,
-select {
+input, button, textarea, select {
     font: inherit;
 }
 
-/* 7. Avoid text overflows */
-p,h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
-
-/* 8. Improve line wrapping */
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 p { text-wrap: pretty; }
-h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
+h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
 
-/* 9. Create a root stacking context */
 #root, #__next { isolation: isolate; }
+
 :root {
     --surface-col: #4a5c6a;
-    --card-col: #3b4a58;         
-    --header-col: #2c3844;      
-    --bg-col: #1c232b;           
+    --card-col: #3b4a58;
+    --header-col: #2c3844;
+    --bg-col: #1c232b;
     --input-bg: #5c6d7c;
-    --true-col: #66dcf6;         
-    --false-col: #9a6ca3;        
-    --accent-col: #5f72a6;       
-    --accent2-col: #66dcf6;     
-    --text: #f1eee9;    
-}         
-  
-  
-.container {
-    display: flex;
+    --true-col: #66dcf6;
+    --false-col: #9a6ca3;
+    --accent-col: #5f72a6;
+    --accent2-col: #66dcf6;
+    --text: #f1eee9;
 }
+
+.container { display: flex; }
 
 .header {
     padding: 32px 64px;
-    /* padding-right: calc(max(25vw, 280px) + 64px + calc(100vw - 100%)); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -83,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 .logo h1 {
     font-size: 24px;
     margin: -10px;
-    font-family: LimeLight, Arial, Helvetica, sans-serif;
+    font-family: Limelight, Arial, Helvetica, sans-serif;
 }
 
 .options {
@@ -92,13 +72,8 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
     gap: 16px;
 }
 
-.icon {
-    height: 30px;
-}
-
-span.icon {
-    font-size: 32px;
-}
+.icon { height: 30px; }
+span.icon { font-size: 32px; }
 
 .wrapper {
     margin-top: 100px;
@@ -110,9 +85,7 @@ span.icon {
     flex-direction: column;
 }
 
-.title {
-    font-size: 18px;
-}
+.title { font-size: 18px; }
 
 .title-wrap {
     display: flex;
@@ -129,6 +102,7 @@ span.icon {
 }
 
 .card {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -138,6 +112,11 @@ span.icon {
     border-radius: 25px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.234);
     overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
 }
 
 .cover {
@@ -165,23 +144,15 @@ span.icon {
     position: relative;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 03.s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .card:hover .hover {
     opacity: 1;
-    visibility: visible;    
+    visibility: visible;
 }
 
-.read {
-    opacity: 0.5;
-}
-
-.card:hover .read {
-    opacity: 1;
-}
-
-.card:hover .cover{
+.card:hover .cover {
     filter: blur(5px) brightness(0.25);
 }
 
@@ -195,25 +166,20 @@ span.icon {
     font-weight: 800;
     font-size: 18px;
     text-align: center;
-    font-family: Montserrat, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Montserrat, serif;
     text-decoration: none;
     color: white;
 }
 
-a:hover {
-    color: var(--accent2-col);
-}
+a:hover { color: var(--accent2-col); }
 
 .action {
     color: white;
     user-select: none;
-    -webkit-user-select: none;
     cursor: pointer;
 }
 
-.action:hover {
-    color: var(--accent2-col);
-}
+.action:hover { color: var(--accent2-col); }
 
 .icon.action {
     transition: filter 0.2s ease;
@@ -223,6 +189,27 @@ a:hover {
     filter: brightness(1.4) sepia(0.2) hue-rotate(15deg) saturate(120%);
 }
 
+.read-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    z-index: 5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.card.read .read-status {
+    background-color: rgba(0, 255, 8, 0.5);
+    color: white;
+}
+
 .info {
     font-weight: 500;
     align-self: end;
@@ -230,7 +217,6 @@ a:hover {
     grid-column: 1 / 2;
     grid-row: 2;
 }
-
 
 /* POPUP DIALOG STYLES */
 .dialog-container {
@@ -271,7 +257,7 @@ a:hover {
 }
 
 .close-button:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* subtle glow */
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 form {
@@ -293,84 +279,28 @@ form input {
     font-size: 14px;
     border-radius: 12px;
     font-family: inherit;
-    
-    /* Thematic colors */
-    background-color: var(--input-bg); /* lighter than --surface-col */
+    background-color: var(--input-bg);
     color: var(--text);
-
-    /* Subtle border and depth */
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
-    
-    /* Smooth transitions */
     transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Placeholder text style */
 form input::placeholder {
-    color: rgba(241, 238, 233, 0.6); /* semi-light version of --text */
+    color: rgba(241, 238, 233, 0.6);
 }
 
-/* Focused input */
 form input:focus {
     border: 1px solid var(--accent-col);
-    box-shadow: 0 0 0 2px rgba(95, 114, 166, 0.4); /* matches --accent-col */
+    box-shadow: 0 0 0 2px rgba(95, 114, 166, 0.4);
 }
 
-/* Valid input */
 form input:valid {
     border: 1px solid var(--true-col);
 }
 
-/* Invalid input (after user starts typing) */
 form input:invalid:not(:placeholder-shown) {
     border: 1px solid var(--false-col);
-}
-
-
-label.switch > input[type=checkbox] {
-    opacity: 0;
-    display: none;
-}
-
-label.switch > div.switch-btn {
-    position: relative;
-    width: 51px;
-    height: 31px;
-    background: #e5e5e5;
-    border-radius: 25.5px;
-    box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.15);
-}
-
-label.switch > div.switch-btn:before {
-    content: "";
-    position: absolute;
-    height: 28px;
-    width: 28px;
-    background: linear-gradient(white, #f2f2f2);
-    left: 2px;
-    top: 50%;
-    transition: all 200ms ease-out;
-    cursor: pointer;
-    border-radius: 50%;
-    box-shadow: 0 8px 6px -4px rgba(0, 0, 0, 0.1);
-    transform: translateY(-50%);
-}
-
-label.switch > input[type=checkbox]:checked + div.switch-btn {
-    background: #47CB8F;
-}
-
-label.switch > input[type=checkbox]:checked + div.switch-btn:before {
-    left: 22px;
-}
-
-.watched {
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
 }
 
 form button {
@@ -381,8 +311,8 @@ form button {
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    align-self: center; /* center horizontally in the dialog */
-    width: auto;        /* no full-width stretch */
+    align-self: center;
+    width: auto;
     transition: background-color 0.2s ease;
 }
 
@@ -394,7 +324,6 @@ form button:active {
     background-color: var(--accent-col);
 }
 
-/* Open Dialog Button */
 .open-dialog-button {
     font-size: 18px;
     padding: 8px 20px;
@@ -409,3 +338,63 @@ form button:active {
 .open-dialog-button:hover {
     background-color: var(--accent2-col);
 }
+
+/* === Read Toggle Switch (Form Style) === */
+.read-toggle-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.read-toggle-wrapper label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.read-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.read-checkbox input {
+    display: none;
+}
+
+.read-checkbox .checkmark {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    background-color: #e5e5e5;
+    border-radius: 50px;
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.read-checkbox .checkmark::before {
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    top: 2px;
+    background: linear-gradient(white, #f2f2f2);
+    border-radius: 50%;
+    transition: transform 0.2s ease-out;
+    box-shadow: 0 8px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.read-checkbox input:checked + .checkmark {
+    background-color: #47CB8F;
+}
+
+.read-checkbox input:checked + .checkmark::before {
+    transform: translateX(18px);
+}
+
+  
