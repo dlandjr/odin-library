@@ -1,25 +1,20 @@
-/* 1. Use a more-intuitive box-sizing model */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+/* 1. Use a more intuitive box-sizing model */
+*, *::before, *::after { box-sizing: border-box; }
 
 /* 2. Remove default margin */
-* {
-    margin: 0;
-}
+* { margin: 0; }
 
-/* 3. Add accessible line-height */
 body {
+    /* 3. Add accesible line-height */
     line-height: 1.5;
+    /* 4. Improve text rendering */
     -webkit-font-smoothing: antialiased;
     color: var(--text);
     background-color: var(--bg-col);
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-family: Roboto, Arial, Helvetica, samns-serif;
 }
 
-/* 4. Improve media defaults */
+/* 5. Improve media defaults */
 img,
 picture,
 video,
@@ -29,67 +24,44 @@ svg {
     max-width: 100%;
 }
 
-/* 5. Inherit fonts for form controls */
+/* 6. Inherit fonts for form controls */
 input,
-button,
+button, 
 textarea,
 select {
     font: inherit;
 }
 
-/* 6. Avoid text overflows */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    overflow-wrap: break-word;
-}
+/* 7. Avoid text overflows */
+p,h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 
-/* 7. Improve line wrapping */
-p {
-    text-wrap: pretty;
-}
+/* 8. Improve line wrapping */
+p { text-wrap: pretty; }
+h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    text-wrap: balance;
-}
-
-/* 8. Root stacking context */
-#root,
-#__next {
-    isolation: isolate;
-}
-
-/* 9. Theme variables */
+/* 9. Create a root stacking context */
+#root, #__next { isolation: isolate; }
 :root {
-    --surface-col: #363a4f;
-    --sidebar-col: #1e2030;
-    --card-col: #24273a;
-    --header-col: #24273a;
-    --bg-col: #181926;
-    --true-col: #49E1C1;
-    --false-col: #e96781;
-    --accent-col: #b28ff5;
-    --accent2-col: #ceb5fc;
-    --text: white;
-}
-
-/* Layout */
+    --surface-col: #4a5c6a;
+    --card-col: #3b4a58;         
+    --header-col: #2c3844;      
+    --bg-col: #1c232b;           
+    --input-bg: #5c6d7c;
+    --true-col: #66dcf6;         
+    --false-col: #9a6ca3;        
+    --accent-col: #5f72a6;       
+    --accent2-col: #66dcf6;     
+    --text: #f1eee9;    
+}         
+  
+  
 .container {
     display: flex;
 }
 
 .header {
     padding: 32px 64px;
-    padding-right: calc(max(25vw, 280px) + 64px + calc(100vw - 100%));
+    /* padding-right: calc(max(25vw, 280px) + 64px + calc(100vw - 100%)); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -108,14 +80,10 @@ h6 {
     gap: 12px;
 }
 
-.logo span {
-    font-size: 52px;
-}
-
 .logo h1 {
-    font-size: 22px;
+    font-size: 24px;
     margin: -10px;
-    font-family: Limelight, Arial, Helvetica, sans-serif;
+    font-family: LimeLight, Arial, Helvetica, sans-serif;
 }
 
 .options {
@@ -135,7 +103,6 @@ span.icon {
 .wrapper {
     margin-top: 100px;
     padding: 32px 64px;
-    /* padding-right: calc(max(25vw, 280px) + 64px); */
     width: 100vw;
     flex: 1;
     gap: 12px;
@@ -143,10 +110,14 @@ span.icon {
     flex-direction: column;
 }
 
+.title {
+    font-size: 18px;
+}
+
 .title-wrap {
     display: flex;
     justify-content: space-between;
-    align-items: center;    
+    align-items: center;
 }
 
 .books {
@@ -171,14 +142,16 @@ span.icon {
 
 .cover {
     grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    height: 300px;
+    object-position: center;
     transition: filter 1s ease;
     z-index: 1;
 }
 
 .card-info {
-    grid-area: 1 / 1;
+    grid-area: 1 /1;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -191,25 +164,25 @@ span.icon {
 .hover {
     position: relative;
     opacity: 0;
-    visibility: hidden; 
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 03.s ease;
 }
 
 .card:hover .hover {
     opacity: 1;
-    visibility: visible;
+    visibility: visible;    
 }
 
-.seen {
+.read {
     opacity: 0.5;
 }
 
-.card:hover .seen {
+.card:hover .read {
     opacity: 1;
 }
 
-.card:hover .cover {
-    filter: blur(5px) brightness(0.5);
+.card:hover .cover{
+    filter: blur(5px) brightness(0.25);
 }
 
 .card .top {
@@ -220,7 +193,7 @@ span.icon {
 
 .card a {
     font-weight: 800;
-    font-size: 24px;
+    font-size: 18px;
     text-align: center;
     font-family: Montserrat, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-decoration: none;
@@ -238,13 +211,26 @@ a:hover {
     cursor: pointer;
 }
 
-.sort {
-    color: var(--text);
-}
-
 .action:hover {
     color: var(--accent2-col);
 }
+
+.icon.action {
+    transition: filter 0.2s ease;
+}
+
+.icon.action:hover {
+    filter: brightness(1.4) sepia(0.2) hue-rotate(15deg) saturate(120%);
+}
+
+.info {
+    font-weight: 500;
+    align-self: end;
+    text-align: end;
+    grid-column: 1 / 2;
+    grid-row: 2;
+}
+
 
 /* POPUP DIALOG STYLES */
 .dialog-container {
@@ -270,6 +256,24 @@ a:hover {
     gap: 20px;
 }
 
+.close-button {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    margin-bottom: -8px;
+    margin-top: -8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.close-button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* subtle glow */
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -284,27 +288,45 @@ form div {
 
 form input {
     outline: none;
-    padding: 6px 12px;
+    padding: 10px 14px;
     width: 100%;
     font-size: 14px;
-    border-radius: 50px;
-    border-style: none;
-    background-color: var(--surface-col);
+    border-radius: 12px;
+    font-family: inherit;
+    
+    /* Thematic colors */
+    background-color: var(--input-bg); /* lighter than --surface-col */
     color: var(--text);
-    border: 1px solid #00000000;
+
+    /* Subtle border and depth */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    
+    /* Smooth transitions */
+    transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Placeholder text style */
+form input::placeholder {
+    color: rgba(241, 238, 233, 0.6); /* semi-light version of --text */
+}
+
+/* Focused input */
 form input:focus {
     border: 1px solid var(--accent-col);
+    box-shadow: 0 0 0 2px rgba(95, 114, 166, 0.4); /* matches --accent-col */
 }
 
+/* Valid input */
 form input:valid {
     border: 1px solid var(--true-col);
 }
 
+/* Invalid input (after user starts typing) */
 form input:invalid:not(:placeholder-shown) {
     border: 1px solid var(--false-col);
 }
+
 
 label.switch > input[type=checkbox] {
     opacity: 0;
@@ -352,19 +374,20 @@ label.switch > input[type=checkbox]:checked + div.switch-btn:before {
 }
 
 form button {
-    padding: 4px;
-    font-size: 18px;
+    padding: 8px 20px;
+    font-size: 16px;
     color: var(--text);
     background-color: var(--accent-col);
-    border-style: none;
-    border-radius: 50px;
-    display: flex;
-    justify-content: center;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    align-self: center; /* center horizontally in the dialog */
+    width: auto;        /* no full-width stretch */
+    transition: background-color 0.2s ease;
 }
 
 form button:hover {
     background-color: var(--accent2-col);
-    cursor: pointer;
 }
 
 form button:active {

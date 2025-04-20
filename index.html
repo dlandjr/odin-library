@@ -4,30 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Library</title>
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="logo">
-                <div class="logo-text">Odin Library</div>
+                <div class="logo-text">
+                    <h1>ODIN LIBRARY</h1>
+                </div>
             </div>
-        </div>
-        <div class="options">
-            <span class="material-symbols-outlined mode icon action">
-                light_mode
-            </span>
-            <a href="https://github.com/dlandjr/odin-library" target="_blank"><img src="./icons/github-mark-white.svg" 
-                alt="github logo" class="github link"></a>
+            
+            <div class="options">
+                <button id="openBookDialogBtn" class="open-dialog-button">+ Add Book</button>
+                <span class="material-symbols-outlined mode icon action">light_mode</span>
+                <a href="https://github.com/dlandjr/odin-library" target="_blank">
+                    <img src="/icons/github-mark-white.svg" alt="github logo" class="icon action">
+                </a>
+            </div>
         </div>
     </div>
     <div class="wrapper">
         <div class="title-wrap">
+            <h3 class="title">BOOKSHELF</h3>
+        </div>
             <div class="books">
                 <template id="card-template">
                     <div class="card" id="">
-                        <img src="" alt="" class="poster">
+                        <img src="" alt="" class="cover">
                         <div class="card-info">
                             <div class="top">
                                 <span class="material-symbols-outlined del action hover">close</span>
@@ -35,7 +43,7 @@
                             </div>
                             <a href="" target="_blank" class="book-title"></a>
                             <br>
-                            <div class="info-hover">
+                            <div class="info hover">
                                 <p class="year"></p>
                                 <p class="author"></p>
                             </div>
@@ -48,7 +56,9 @@
 
     <dialog id="addBookDialog" class="dialog-container">
         <form method="dialog" class="dialog-content">
-            <button class="close-button" type="button" id="closeBookDialogBtn">x</button>
+            <button class="close-button" type="button" id="closeBookDialogBtn">
+                <span class="material-symbols-outlined">close</span>
+            </button>
 
             <h3>Add Book</h3>
 
@@ -68,13 +78,13 @@
             </div>
 
             <div>
-                <label for="book-pages">Number of Pages</label>
-                <input type="text" id="book-pages" name="pages" placeholder="336" pattern="^\d+$" required>
+                <label for="book-link">Goodreads URL</label>
+                <input type="url" id="book-link" name="link" placeholder="https://www.goodreads.com/book/show/...">
             </div>
 
             <div>
                 <label for="book-cover">Cover URL</label>
-                <input type="text" id="book-cover" name="cover" placeholder="https://books.com/cover.jpg">
+                <input type="url" id="book-cover" name="cover" placeholder="https://books.com/cover.jpg">
             </div>
 
             <div class="read-status">
@@ -86,7 +96,7 @@
             </div>
 
             <button type="submit" id="submit-book">
-                <span class="matetial-symbols-outlined">Submit</span>
+                <h3>Submit</h3>
             </button>
         </form>
     </dialog>
